@@ -1,18 +1,13 @@
 from models import *
 from helper import *
+from sqlconnector import SqlConnector
 
-goodbye = Command('goodbye', State('Have a nice day!', quit = True))
-
-helloState = State('General Kenobi!', [])
-hello = Command('hello', helloState)
-
-helloState.addCommand(hello)
-helloState.addCommand(goodbye)
+sql = SqlConnector()
 
 def getNewState(userInput, state):
 	for command in state.commands:
-		if command.text in userInput:
-			return command.state
+		if command.text.lower() in userInput.lower():
+			return sql.getState(command.state)
 
 	return State("Sorry, I don't understand '{}'".format(userInput))
 
@@ -26,11 +21,19 @@ def command(state):
 	userInput = input("Input: ")
 	return parse(userInput, state)
 
-state = State("")
+def getFirstState():
+	state = State("You awake in a dark room. There is an exit North. \nWhat would you like to do?")
+	commands = sql.getAvailableCommands(1)
 
-state.addCommand(hello)
-state.addCommand(goodbye)
+	for c in commands:
+		state.addCommand(c)
+
+	return state
+
+
+state = getFirstState()
+printBold(f"{state.text}\n")
 
 while not state.quit:
 	state = command(state)
-	printBold(state.text)
+	printBold(f"{state.text}\n")
