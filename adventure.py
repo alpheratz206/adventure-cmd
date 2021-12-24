@@ -1,25 +1,36 @@
-import models
+from models import *
+from helper import *
 
-hello = models.Transition('hello', models.State('General Kenobi!'))
-goodbye = models.Transition('goodbye', models.State('Have a nice day!', quit = True))
+goodbye = Command('goodbye', State('Have a nice day!', quit = True))
 
-def command():
+helloState = State('General Kenobi!', [])
+hello = Command('hello', helloState)
+
+helloState.addCommand(hello)
+helloState.addCommand(goodbye)
+
+def getNewState(userInput, state):
+	for command in state.commands:
+		if command.text in userInput:
+			return command.state
+
+	return State("Sorry, I don't understand '{}'".format(userInput))
+
+def parse(userInput, state):
+	try:
+		return getNewState(userInput, state)
+	except AttributeError:
+		print("error")
+
+def command(state):
 	userInput = input("Input: ")
-	return parse(userInput)
+	return parse(userInput, state)
 
-def parse(userInput):
-	if 'Hello' in userInput:
-		return models.State('General Kenobi!')
-	if 'Goodbye' in userInput:
-		return goodbye.state
+state = State("")
 
-	return models.State("Sorry, I don't understand '{}'".format(userInput))
+state.addCommand(hello)
+state.addCommand(goodbye)
 
-def main():
-	state = models.State("")
-
-	while not state.quit:
-		state = command()
-		print(state.text)
-
-main()
+while not state.quit:
+	state = command(state)
+	printBold(state.text)

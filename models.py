@@ -1,14 +1,13 @@
-
 class State:
-	def __init__(self, text, transitions = [], quit = False):
+	def __init__(self, text, commands = [], quit = False):
 		self.text = text
-		self.transitions = transitions
+		self.commands = commands
 		self.quit = quit
 
-	def addTransition(transition):
-		self.transitions.append(transition)
+	def addCommand(self, command):
+		self.commands.append(command)
 
-class Transition:
+class Command:
 	def __init__(self, text, state):
 		self.text = text
 		self.state = state
