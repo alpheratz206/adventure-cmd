@@ -1,9 +1,8 @@
 {
-	"States": [
+	"states":[
 		{
-			"Id": 100,
-			"Description": "You awaken in a dark room. There is an exit North."
+			"Id": 1000,
+			"Description": "You awaken in a dark room. There is an exit North.\nWhat would you like to do?"
 		}
-
 	]
 }

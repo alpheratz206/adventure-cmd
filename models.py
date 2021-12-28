@@ -1,7 +1,7 @@
 class State:
 	reply = ""
 
-	def __init__(self, text, commands = [], quit = False):
+	def __init__(self, id, text, commands = [], quit = False):
 		self.text = text
 		self.commands = commands
 		self.quit = quit
