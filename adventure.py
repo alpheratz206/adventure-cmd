@@ -19,6 +19,16 @@ class Adventure:
 		except KeyError:
 			pass
 
+		try:
+			direction = command['Direction']
+			try:
+				newStateID = self.state[direction]
+				self.__changeState(list(filter(lambda state: state['Id'] == newStateID, self.data.states))[0])
+			except KeyError:
+				printBold("You cannot go that way.")
+		except KeyError:
+			pass
+
 	def __matchRank(self, cmd, userInput):
 		try:
 			isDefault = cmd['Default']
@@ -35,7 +45,8 @@ class Adventure:
 					multiScore = min(multiScore, abs(len(matchText) - len(userInput)))
 		except KeyError:
 			try:
-				singleScore = abs(len(cmd['MatchText']) - len(userInput))
+				if cmd['MatchText'] in userInput:
+					singleScore = abs(len(cmd['MatchText']) - len(userInput))
 			except KeyError:
 				pass
 
@@ -57,8 +68,8 @@ class Adventure:
 
 		listMatchingCommands.sort(key = lambda command: command['MatchRank'])
 
-		for cmd in listMatchingCommands:
-			print(f"{cmd['Id']}, score: {cmd['MatchRank']}")
+		# for cmd in listMatchingCommands:
+		# 	print(f"{cmd['Id']}, score: {cmd['MatchRank']}")
 
 		return listMatchingCommands[0]
 

@@ -28,6 +28,38 @@
 			"ReplyText": "Have a nice day!",
 			"Always": true,
 			"Quit": true
+		},
+		{
+			"Id": 1040,
+			"MultiMatchText": [
+				"go north",
+				"travel north",
+				"exit north",
+				"north"
+			],
+			"Direction": "North",
+			"Always": true
+		},
+		{
+			"Id": 1041,
+			"MultiMatchText": [
+				"go south",
+				"travel south",
+				"exit south",
+				"south"
+			],
+			"Direction": "South",
+			"Always": true
+		},
+		{
+			"Id": 1050,
+			"MultiMatchText": [
+				"go",
+				"travel",
+				"exit"
+			],
+			"ReplyText": "You cannot go that way.",
+			"Always": true
 		}
 	]
 }
