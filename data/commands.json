@@ -17,7 +17,7 @@
 			"Id": 1020,
 			"MatchText": "hello",
 			"Type": "Reply",
-			"ReplyText": "Hello! You are playing Mind Adventure, the classic text adventure from AndHash studios! Enter commands to progress in the story, discover new locations, or pick up items.\nWhat would you like to do?",
+			"ReplyText": "Hello! You are playing Mind Adventure, the classic text adventure from AndHash studios! Enter commands to progress in the story, discover new locations, or pick up items.\nWhat would you like to do?\n",
 			"Always": true
 		},
 		{

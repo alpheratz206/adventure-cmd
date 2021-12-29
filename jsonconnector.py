@@ -10,6 +10,7 @@ class JsonConnector:
 
 	def __loadCommands(self):
 		self.commands = self.__loadFile('commands')
+		self.commands.sort(reverse=True, key = lambda command: command['Id'])
 
 	def __init__(self):
 		self.__loadStates()
