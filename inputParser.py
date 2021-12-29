@@ -44,6 +44,9 @@ class InputParser:
 
 		return list(filter(lambda cmd: cmd['Score'] >= 0, commands))
 
+	def assignScoresAndSort(self, commands, userInput):
+		return self.assignScores(commands, userInput).sort(key = lambda command: command['Score'])
+
 
 	def __init__(self):
 		self.commandHelper = CommandHelper()

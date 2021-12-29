@@ -31,8 +31,7 @@ class Adventure:
 			pass
 
 	def __getCommandFromInput(self, userInput):
-		scoredCommands = self.inputParser.assignScores(self.data.commands, userInput)
-		scoredCommands.sort(key = lambda command: command['Score'])
+		scoredCommands = self.inputParser.assignScoresAndSort(self.data.commands, userInput)
 
 		# for cmd in listMatchingCommands:
 		# 	print(f"{cmd['Id']}, score: {cmd['Score']}")
