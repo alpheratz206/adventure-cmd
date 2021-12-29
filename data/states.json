@@ -12,7 +12,7 @@
 		},
 		{
 			"Id": 1010,
-			"Description": "You are in a long corridor full of prison cells. The air is damp and cold, the floor an walls bare stone.\nYour cell is South. The corridor extends East and West.",
+			"Description": "You are in a long corridor full of prison cells. The air is damp and cold; the floor and walls are bare stone.\nYour cell is South. The corridor extends East and West.",
 			"South": 1001
 		}
 	]

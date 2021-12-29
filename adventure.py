@@ -1,4 +1,5 @@
 from jsonconnector import *
+from inputParser import *
 from helper import *
 
 class Adventure:
@@ -29,49 +30,14 @@ class Adventure:
 		except KeyError:
 			pass
 
-	def __matchRank(self, cmd, userInput):
-		try:
-			isDefault = cmd['Default']
-			if isDefault:
-				return 1000
-		except KeyError:
-			pass
-
-		multiScore = 1000
-		singleScore = 1000
-		try:
-			for matchText in cmd['MultiMatchText']:
-				if matchText in userInput:
-					multiScore = min(multiScore, abs(len(matchText) - len(userInput)))
-		except KeyError:
-			try:
-				if cmd['MatchText'] in userInput:
-					singleScore = abs(len(cmd['MatchText']) - len(userInput))
-			except KeyError:
-				pass
-
-		if singleScore == 1000 and multiScore == 1000:
-			score = -1
-		else:
-			score = min(multiScore, singleScore)
-
-		return score
-
 	def __getCommandFromInput(self, userInput):
-		commands = self.data.commands
-
-		for cmd in commands:
-			cmd['MatchRank'] = self.__matchRank(cmd, userInput)
-
-		matchingCommands = filter(lambda command: command['MatchRank'] >= 0, commands)
-		listMatchingCommands = list(matchingCommands)
-
-		listMatchingCommands.sort(key = lambda command: command['MatchRank'])
+		scoredCommands = self.inputParser.assignScores(self.data.commands, userInput)
+		scoredCommands.sort(key = lambda command: command['Score'])
 
 		# for cmd in listMatchingCommands:
-		# 	print(f"{cmd['Id']}, score: {cmd['MatchRank']}")
+		# 	print(f"{cmd['Id']}, score: {cmd['Score']}")
 
-		return listMatchingCommands[0]
+		return scoredCommands[0]
 
 
 	def play(self):
@@ -84,8 +50,9 @@ class Adventure:
 
 	def __init__(self):
 		self.data = JsonConnector()
+		self.inputParser = InputParser()
 		self.__changeState(self.data.states[0])
-		self.commands = self.data.commands # all commands available
+		self.commands = self.data.commands
 
 
 Adventure().play()
