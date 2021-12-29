@@ -19,47 +19,48 @@ class Adventure:
 		except KeyError:
 			pass
 
-	def __filterCommands(self, command, userInput):
+	def __matchRank(self, cmd, userInput):
 		try:
-			for matchText in command['MatchText']:
+			isDefault = cmd['Default']
+			if isDefault:
+				return 1000
+		except KeyError:
+			pass
+
+		multiScore = 1000
+		singleScore = 1000
+		try:
+			for matchText in cmd['MultiMatchText']:
 				if matchText in userInput:
-					return True
+					multiScore = min(multiScore, abs(len(matchText) - len(userInput)))
 		except KeyError:
-			pass
+			try:
+				singleScore = abs(len(cmd['MatchText']) - len(userInput))
+			except KeyError:
+				pass
 
-		try:
-			return command['MatchText'] in userInput
-		except KeyError:
-			pass
+		if singleScore == 1000 and multiScore == 1000:
+			score = -1
+		else:
+			score = min(multiScore, singleScore)
 
-		try:
-			default = command['Default']
-			if default:
-				return True
-		except KeyError:
-			pass
+		return score
 
-	def __matchRank(self, cmd):
-		try:
-			matchLength = len(cmd['MatchText'])
-		except KeyError:
-			return -1
 
-		try:
-			isDefault
 
 	def __getCommandFromInput(self, userInput):
-		matchingCommands = filter(lambda command: self.__filterCommands(command, userInput), self.data.commands)
+		commands = self.data.commands
+
+		for cmd in commands:
+			cmd['MatchRank'] = self.__matchRank(cmd, userInput)
+
+		matchingCommands = filter(lambda command: command['MatchRank'] >= 0, commands)
 		listMatchingCommands = list(matchingCommands)
 
-		listMatchingCommands.sort(reverse=True, key = lambda command: self.__matchRank(command))
+		listMatchingCommands.sort(key = lambda command: command['MatchRank'])
 
-		# try:
-			
-		# 	for cmd in listMatchingCommands:
-		# 		print(cmd['MatchText'])
-		# except KeyError:
-		# 	pass
+		for cmd in listMatchingCommands:
+			print(f"{cmd['Id']}, score: {cmd['MatchRank']}")
 
 		return listMatchingCommands[0]
 

@@ -2,33 +2,29 @@
 	"commands": [
 		{
 			"Id": 1000,
-			"Type": "Reply",
 			"ReplyText": "Sorry, I don't understand that.",
 			"Default": true
 		},
 		{
 			"Id": 1010,
 			"MatchText": "hello there",
-			"Type": "Reply",
 			"ReplyText": "General Kenobi!",
 			"Always": true
 		},
 		{
 			"Id": 1020,
 			"MatchText": "hello",
-			"Type": "Reply",
 			"ReplyText": "Hello! You are playing Mind Adventure, the classic text adventure from AndHash studios! Enter commands to progress in the story, discover new locations, or pick up items.\nWhat would you like to do?\n",
 			"Always": true
 		},
 		{
 			"Id": 1030,
-			"MatchText": [
+			"MultiMatchText": [
 				"goodbye",
 				"bye",
 				"quit",
 				"qqq"
 			],
-			"Type": "Reply",
 			"ReplyText": "Have a nice day!",
 			"Always": true,
 			"Quit": true
