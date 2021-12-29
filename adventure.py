@@ -1,44 +1,80 @@
-from models import *
+from jsonconnector import *
 from helper import *
-from adventureEnum import *
-from sqlconnector import SqlConnector
 
-sql = SqlConnector()
+class Adventure:
+	quit = False
 
-def getNewState(userInput, state):
-	for command in state.commands:
-		if command.text.lower() in userInput.lower():
-			if command.commandType == CommandType['BASIC']:
-				return sql.getState(command.state)
-			elif command.commandType == CommandType['REPLY']:
-				state.reply = command.replyText
-				state.quit = command.quit
-				return state
-			elif command.commandType == CommandType['MOVE']:
-				state.reply = 'An error occurred'
-				return state
+	def __changeState(self, state):
+		self.state = state
+		printBold(f"{self.state['Description']}\n")
 
-	state.reply = ""
-	return state
+	def __processCommand(self, command):
+		try:
+			self.quit = command['Quit']
+		except KeyError:
+			pass
 
-def parse(userInput, state):
-	try:
-		return getNewState(userInput, state)
-	except AttributeError:
-		print("error")
+		try:
+			printBold(command['ReplyText'])
+		except KeyError:
+			pass
 
-def command(state):
-	userInput = input("Input: ")
-	return parse(userInput, state)
+	def __matchRank(self, cmd, userInput):
+		try:
+			isDefault = cmd['Default']
+			if isDefault:
+				return 1000
+		except KeyError:
+			pass
 
-def getFirstState():
-	return sql.getState(3)
+		multiScore = 1000
+		singleScore = 1000
+		try:
+			for matchText in cmd['MultiMatchText']:
+				if matchText in userInput:
+					multiScore = min(multiScore, abs(len(matchText) - len(userInput)))
+		except KeyError:
+			try:
+				singleScore = abs(len(cmd['MatchText']) - len(userInput))
+			except KeyError:
+				pass
+
+		if singleScore == 1000 and multiScore == 1000:
+			score = -1
+		else:
+			score = min(multiScore, singleScore)
+
+		return score
+
+	def __getCommandFromInput(self, userInput):
+		commands = self.data.commands
+
+		for cmd in commands:
+			cmd['MatchRank'] = self.__matchRank(cmd, userInput)
+
+		matchingCommands = filter(lambda command: command['MatchRank'] >= 0, commands)
+		listMatchingCommands = list(matchingCommands)
+
+		listMatchingCommands.sort(key = lambda command: command['MatchRank'])
+
+		for cmd in listMatchingCommands:
+			print(f"{cmd['Id']}, score: {cmd['MatchRank']}")
+
+		return listMatchingCommands[0]
 
 
+	def play(self):
+		while not self.quit:
+			userInput = input("Input: ")
 
-state = getFirstState()
-printBold(f"{state.text}\n")
+			command = self.__getCommandFromInput(userInput)
+			self.__processCommand(command)
 
-while not state.quit:
-	state = command(state)
-	printBold(f"{state.getPrintText()}\n")
+
+	def __init__(self):
+		self.data = JsonConnector()
+		self.__changeState(self.data.states[0])
+		self.commands = self.data.commands # all commands available
+
+
+Adventure().play()
