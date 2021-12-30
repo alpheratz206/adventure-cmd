@@ -17,7 +17,7 @@ class Adventure:
 			pass
 
 		try:
-			printBold(command['ReplyText'])
+			printBold(f"{command['ReplyText']}\n")
 		except KeyError:
 			pass
 
@@ -27,7 +27,7 @@ class Adventure:
 				newStateID = self.state[direction]
 				self.__changeState(list(filter(lambda state: state['Id'] == newStateID, self.data.states))[0])
 			except KeyError:
-				printBold("You cannot go that way.")
+				printBold("You cannot go that way.\n")
 		except KeyError:
 			pass
 
@@ -53,8 +53,6 @@ class Adventure:
 	def play(self):
 		while not self.quit:
 			userInput = input("Input: ")
-
-			# inputWords = userInput.split()
 
 			command = self.__getCommandFromInput(userInput)
 			self.__processCommand(command)

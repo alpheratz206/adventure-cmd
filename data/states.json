@@ -22,9 +22,12 @@
 		},
 		{
 			"Id": 1011,
-			"Description": "Occupied cell.",
+			"Description": "A figure lays slumped in this cell. The cell is dark and the door is locked.\n\nAbove the door is inscribed the number '451'.",
 			"Back": 1010,
-			"South": 1010
+			"South": 1010,
+			"CommandWhite": [
+				1080
+			]
 		}
 	]
 }

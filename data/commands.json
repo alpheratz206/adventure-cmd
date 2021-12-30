@@ -12,12 +12,6 @@
 			"Always": true
 		},
 		{
-			"Id": 1020,
-			"MatchText": "hello",
-			"ReplyText": "Hello! You are playing Mind Adventure, the classic text adventure from AndHash studios! Enter commands to progress in the story, discover new locations, or pick up items.\nWhat would you like to do?\n",
-			"Always": true
-		},
-		{
 			"Id": 1030,
 			"MultiMatchText": [
 				"goodbye",
@@ -97,7 +91,7 @@
 		{
 			"Id": 1060,
 			"MatchText": "cells",
-			"ReplyText": "There are a dozen cells on each wall that you can see. All are shut, save the one you came from.\nAfter inspecting the cells closely, you notice a shadowy figure lays slumped in a cell along the north wall."
+			"ReplyText": "There are a dozen cells on each wall that you can see. All are shut, save the one you came from.\n\nAfter inspecting the cells closely, you notice a shadowy figure lays slumped in a cell along the north wall."
 		},
 		{
 			"Id": 1070,
@@ -108,6 +102,15 @@
 				"occupied"
 			],
 			"Direction": "Occupied Cell"
+		},
+		{
+			"Id": 1080,
+			"MultiMatchText": [
+				"say",
+				"ask",
+				"shout"
+			],
+			"ReplyText": "The figure does not respond to anything you say."
 		}
 	]
 }
