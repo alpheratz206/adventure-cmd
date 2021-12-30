@@ -1,7 +1,7 @@
 {
 	"commands": [
 		{
-			"Id": 1040,
+			"Id": 2000,
 			"MultiMatchText": [
 				"go north",
 				"travel north",
@@ -12,7 +12,7 @@
 			"Always": true
 		},
 		{
-			"Id": 1041,
+			"Id": 2010,
 			"MultiMatchText": [
 				"go south",
 				"travel south",
@@ -23,7 +23,7 @@
 			"Always": true
 		},
 		{
-			"Id": 1042,
+			"Id": 2020,
 			"MultiMatchText": [
 				"go east",
 				"travel east",
@@ -34,7 +34,7 @@
 			"Always": true
 		},
 		{
-			"Id": 1043,
+			"Id": 2030,
 			"MultiMatchText": [
 				"go west",
 				"travel west",
@@ -45,7 +45,7 @@
 			"Always": true
 		},
 		{
-			"Id": 1044,
+			"Id": 2040,
 			"MultiMatchText": [
 				"go back",
 				"travel back",
@@ -56,7 +56,7 @@
 			"Always": true
 		},
 		{
-			"Id": 1050,
+			"Id": 2050,
 			"MultiMatchText": [
 				"go",
 				"travel",

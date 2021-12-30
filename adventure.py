@@ -6,16 +6,14 @@ from commandHelper import *
 class Adventure:
 	quit = False
 
-	def __changeState(self, state):
-		self.state = state
+	def __introduceState(self):
 		printBold(f"{self.state['Description']}\n")
 
-	def __processCommand(self, command, arguments = []):
-		try:
-			self.quit = command['Quit']
-		except KeyError:
-			pass
+	def __changeState(self, state):
+		self.state = state
+		self.__introduceState()
 
+	def __processCommand(self, command, arguments = []):
 		try:
 			printBold(f"{command['ReplyText']}\n")
 		except KeyError:
@@ -28,6 +26,15 @@ class Adventure:
 				self.__changeState(list(filter(lambda state: state['Id'] == newStateID, self.data.states))[0])
 			except KeyError:
 				printBold("You cannot go that way.\n")
+		except KeyError:
+			pass
+
+		try:
+			action = command['UniqueAction']
+			if action.lower() == "repeat":
+				self.__introduceState()
+			elif action.lower() == "quit":
+				self.quit = True
 		except KeyError:
 			pass
 

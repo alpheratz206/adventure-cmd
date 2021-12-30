@@ -3,12 +3,29 @@
 		{
 			"Id": 1000,
 			"Description": "You awaken in a dark room. There is an exit North.\nWhat would you like to do?",
-			"North": 1010
+			"North": 3000,
+			"CommandWhite": [
+				1000
+			]
 		},
 		{
 			"Id": 1001,
 			"Description": "This is your cell. You woke up here some time ago. It is dark, and you cannot see anything.",
-			"North": 1010
+			"North": 3000,
+			"CommandWhite": [
+				1000
+			]
+		}
+	],
+	"commands": [
+		{
+			"Id": 1000,
+			"MultiMatchText": [
+				"look",
+				"examine",
+				"search"
+			],
+			"ReplyText": "It is dark, and you cannot see anything."
 		}
 	]
 }

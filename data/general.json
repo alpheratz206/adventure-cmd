@@ -1,18 +1,12 @@
 {
 	"commands": [
 		{
-			"Id": 1000,
+			"Id": 100,
 			"ReplyText": "Sorry, I don't understand that.",
 			"Default": true
 		},
 		{
-			"Id": 1010,
-			"MatchText": "hello there",
-			"ReplyText": "General Kenobi!",
-			"Always": true
-		},
-		{
-			"Id": 1030,
+			"Id": 200,
 			"MultiMatchText": [
 				"goodbye",
 				"bye",
@@ -21,7 +15,22 @@
 			],
 			"ReplyText": "Have a nice day!",
 			"Always": true,
-			"Quit": true
+			"UniqueAction": "Quit"
+		},
+		{
+			"Id": 300,
+			"MatchText": "hello there",
+			"ReplyText": "General Kenobi!",
+			"Always": true
+		},
+		{
+			"Id": 400,
+			"MultiMatchText": [
+				"repeat",
+				"where am i"
+			],
+			"Always": true,
+			"UniqueAction": "Repeat"
 		}
 	]
 }

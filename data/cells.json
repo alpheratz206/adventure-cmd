@@ -1,33 +1,33 @@
 {
 	"states": [
 		{
-			"Id": 1010,
+			"Id": 3000,
 			"Description": "You are in a long corridor. The air is damp and cold; the floor and walls are bare stone.\n\nPrison cells are set into the walls on the North and South sides. Dim torch-light enters through a grate in the ceiling. \n\nYour cell is South. The corridor extends East and West.",
 			"South": 1001,
-			"Occupied Cell": 1011,
+			"Occupied Cell": 3010,
 			"CommandWhite": [
-				1060,
-				1070
+				3000,
+				3010
 			]
 		},
 		{
-			"Id": 1011,
+			"Id": 3010,
 			"Description": "A figure lays slumped in this cell. The cell is dark and the door is locked.\n\nAbove the door is inscribed the number '451'.",
-			"Back": 1010,
-			"South": 1010,
+			"Back": 3000,
+			"South": 3000,
 			"CommandWhite": [
-				1080
+				3020
 			]
 		}
 	],
 	"commands": [
 		{
-			"Id": 1060,
+			"Id": 3000,
 			"MatchText": "cells",
 			"ReplyText": "There are a dozen cells on each wall that you can see. All are shut, save the one you came from.\n\nAfter inspecting the cells closely, you notice a shadowy figure lays slumped in a cell along the north wall."
 		},
 		{
-			"Id": 1070,
+			"Id": 3010,
 			"MultiMatchText": [
 				"prisoner",
 				"shadowy",
@@ -37,10 +37,12 @@
 			"Direction": "Occupied Cell"
 		},
 		{
-			"Id": 1080,
+			"Id": 3020,
 			"MultiMatchText": [
 				"say",
 				"ask",
+				"talk",
+				"speak",
 				"shout"
 			],
 			"ReplyText": "The figure does not respond to anything you say."
