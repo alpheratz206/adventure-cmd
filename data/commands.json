@@ -52,6 +52,39 @@
 			"Always": true
 		},
 		{
+			"Id": 1042,
+			"MultiMatchText": [
+				"go east",
+				"travel east",
+				"exit east",
+				"east"
+			],
+			"Direction": "East",
+			"Always": true
+		},
+		{
+			"Id": 1043,
+			"MultiMatchText": [
+				"go west",
+				"travel west",
+				"exit west",
+				"west"
+			],
+			"Direction": "West",
+			"Always": true
+		},
+		{
+			"Id": 1043,
+			"MultiMatchText": [
+				"go back",
+				"travel back",
+				"exit back",
+				"back"
+			],
+			"Direction": "Back",
+			"Always": true
+		},
+		{
 			"Id": 1050,
 			"MultiMatchText": [
 				"go",
@@ -60,6 +93,21 @@
 			],
 			"ReplyText": "You cannot go that way.",
 			"Always": true
+		},
+		{
+			"Id": 1060,
+			"MatchText": "cells",
+			"ReplyText": "There are a dozen cells on each wall that you can see. All are shut, save the one you came from.\nAfter inspecting the cells closely, you notice a shadowy figure lays slumped in a cell along the north wall."
+		},
+		{
+			"Id": 1070,
+			"MultiMatchText": [
+				"prisoner",
+				"shadowy",
+				"figure",
+				"occupied"
+			],
+			"Direction": "Occupied Cell"
 		}
 	]
 }

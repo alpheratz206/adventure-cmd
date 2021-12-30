@@ -1,7 +1,7 @@
 class CommandHelper:
-	def isDefault(self, cmd):
+	def boolCheck(self, cmd, prop):
 		try:
-			isDefault = cmd['Default']
-			return isDefault
+			isBool = cmd[prop]
+			return isBool
 		except KeyError:
 			return False

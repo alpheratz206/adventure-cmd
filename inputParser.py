@@ -30,10 +30,12 @@ class InputParser:
 		else:
 			score = min(multiScore, singleScore)
 
+		# print(f"Debug: {cmd['Id']}, score: {score}")
+
 		return score
 
 	def __generateScoreWithEdgeCases(self, cmd, userInput):
-		if self.commandHelper.isDefault(cmd):
+		if self.commandHelper.boolCheck(cmd, 'Default'):
 			return 1000
 
 		return self.__generateScore(cmd, userInput)
@@ -45,7 +47,9 @@ class InputParser:
 		return list(filter(lambda cmd: cmd['Score'] >= 0, commands))
 
 	def assignScoresAndSort(self, commands, userInput):
-		return self.assignScores(commands, userInput).sort(key = lambda command: command['Score'])
+		scored = self.assignScores(commands, userInput)
+		scored.sort(key = lambda command: command['Score'])
+		return scored
 
 
 	def __init__(self):
