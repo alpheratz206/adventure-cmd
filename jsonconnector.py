@@ -29,4 +29,5 @@ class JsonConnector:
 
 		self.__loadAllFiles()
 
+		self.states.sort(reverse=False, key = lambda state: state['Id'])
 		self.commands.sort(reverse=True, key = lambda command: command['Id'])

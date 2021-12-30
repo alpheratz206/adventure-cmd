@@ -1,29 +1,6 @@
 {
 	"commands": [
 		{
-			"Id": 1000,
-			"ReplyText": "Sorry, I don't understand that.",
-			"Default": true
-		},
-		{
-			"Id": 1010,
-			"MatchText": "hello there",
-			"ReplyText": "General Kenobi!",
-			"Always": true
-		},
-		{
-			"Id": 1030,
-			"MultiMatchText": [
-				"goodbye",
-				"bye",
-				"quit",
-				"qqq"
-			],
-			"ReplyText": "Have a nice day!",
-			"Always": true,
-			"Quit": true
-		},
-		{
 			"Id": 1040,
 			"MultiMatchText": [
 				"go north",
@@ -87,30 +64,6 @@
 			],
 			"ReplyText": "You cannot go that way.",
 			"Always": true
-		},
-		{
-			"Id": 1060,
-			"MatchText": "cells",
-			"ReplyText": "There are a dozen cells on each wall that you can see. All are shut, save the one you came from.\n\nAfter inspecting the cells closely, you notice a shadowy figure lays slumped in a cell along the north wall."
-		},
-		{
-			"Id": 1070,
-			"MultiMatchText": [
-				"prisoner",
-				"shadowy",
-				"figure",
-				"occupied"
-			],
-			"Direction": "Occupied Cell"
-		},
-		{
-			"Id": 1080,
-			"MultiMatchText": [
-				"say",
-				"ask",
-				"shout"
-			],
-			"ReplyText": "The figure does not respond to anything you say."
 		}
 	]
 }

@@ -1,0 +1,27 @@
+{
+	"commands": [
+		{
+			"Id": 1000,
+			"ReplyText": "Sorry, I don't understand that.",
+			"Default": true
+		},
+		{
+			"Id": 1010,
+			"MatchText": "hello there",
+			"ReplyText": "General Kenobi!",
+			"Always": true
+		},
+		{
+			"Id": 1030,
+			"MultiMatchText": [
+				"goodbye",
+				"bye",
+				"quit",
+				"qqq"
+			],
+			"ReplyText": "Have a nice day!",
+			"Always": true,
+			"Quit": true
+		}
+	]
+}
