@@ -1,17 +1,32 @@
 import json
+import os
 
 class JsonConnector:
 	def __loadFile(self, fileName):
-		file = open(f'data/{fileName}.json')
-		return json.load(file)[fileName]
+		file = open(f'data/{fileName}')
+		fileData = json.load(file)
 
-	def __loadStates(self):
-		self.states = self.__loadFile('states')
+		try:
+			self.states = self.states + fileData['states']
+		except KeyError:
+			pass
 
-	def __loadCommands(self):
-		self.commands = self.__loadFile('commands')
-		self.commands.sort(reverse=True, key = lambda command: command['Id'])
+		try:
+			self.commands = self.commands + fileData['commands']
+		except KeyError:
+			pass
+
+	def __loadAllFiles(self): 
+		directory = './data'
+		for fileName in os.listdir(directory):
+			if fileName == '.DS_Store':
+				continue
+			self.__loadFile(fileName)
 
 	def __init__(self):
-		self.__loadStates()
-		self.__loadCommands()
+		self.states = []
+		self.commands = []
+
+		self.__loadAllFiles()
+
+		self.commands.sort(reverse=True, key = lambda command: command['Id'])
