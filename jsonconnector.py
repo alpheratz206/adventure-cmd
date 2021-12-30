@@ -2,6 +2,21 @@ import json
 import os
 
 class JsonConnector:
+	def __unique(self, stuff):
+		seen = set()
+		return not any(ele in seen or seen.add(ele) for ele in stuff)
+
+	def __validateStates(self):
+		ids = map(lambda state: state['Id'], self.states)
+		if not self.__unique(ids):
+			raise Exception("State IDs are not unique!")
+
+	def __validateCommands(self):
+		ids = map(lambda cmd: cmd['Id'], self.commands)
+		if not self.__unique(ids):
+			raise Exception("Command IDs are not unique!")
+
+
 	def __loadFile(self, fileName):
 		file = open(f'data/{fileName}')
 		fileData = json.load(file)
@@ -29,5 +44,8 @@ class JsonConnector:
 
 		self.__loadAllFiles()
 
-		self.states.sort(reverse=False, key = lambda state: state['Id'])
-		self.commands.sort(reverse=True, key = lambda command: command['Id'])
+		self.__validateStates()
+		self.__validateCommands()
+
+		self.states.sort(key = lambda state: state['Id'])
+		self.commands.sort(key = lambda command: command['Id'])
