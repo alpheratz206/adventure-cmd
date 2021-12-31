@@ -1,0 +1,37 @@
+{
+	"states": [
+		{
+			"Id": 5000,
+			"Description": "You are in a dungeon. Glowing, purple mist fills the room with no apparent source. You smell blood, but see none.\n\nThe room is full of grim looking contraptions. A dead torturer sits slumped in an armchair. A pile of loose keys sits in a tray.\n\nThe only exit is up.",
+			"Up": 4000,
+			"Keys": 5010,
+			"CommandWhite": [
+				5000
+			]
+		},
+		{
+			"Id": 5010,
+			"Description": "The tray of keys is in front of you. They are all inscribed with a number. What number would you like to search for?",
+			"Up": 4000,
+			"Back": 5000,
+			"CommandWhite": [
+				5010
+			]
+		}
+	],
+	"commands": [
+		{
+			"Id": 5000,
+			"MultiMatchText": [
+				"key",
+				"tray"
+			],
+			"Direction": "Keys"
+		},
+		{
+			"Id": 5010,
+			"MultiMatchText": [ "0","1","2","3","4","5","6","7","8","9"	],
+			"ReplyText": "As soon as your fingers brush the keys, you pull your hand away. It is like touching a hot stove, though the keys are not hot: they might be enchanted to keep certain people from touching them."
+		}
+	]
+}

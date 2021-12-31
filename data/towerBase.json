@@ -1,0 +1,32 @@
+{
+	"states": [
+		{
+			"Id": 4000,
+			"Description": "You are in a large circular room with a domed ceiling, lit by torches. A mirror hangs on the East wall.\n\nThe cell block is West. Staircases lead up and down.",
+			"West": 3000,
+			"Down": 5000,
+			"CommandWhite": [
+				4000,
+				4010,
+				4020
+			]
+		}
+	],
+	"commands": [
+		{
+			"Id": 4000,
+			"ReplyText": "The torches are hung too high up for you to reach.",
+			"MatchText": "torch"
+		},
+		{
+			"Id": 4010,
+			"ReplyText": "The staircases are visible through archways set into the walls. Plaques are hung above the archways, but you cannot read the langauge they are written in.",
+			"MatchText": "staircase"
+		},
+		{
+			"Id": 4020,
+			"ReplyText": "You look at yourself in the mirror. You look just how you expect to look, but for one detail: the number '999' has been written onto your forehead. You try to rub off the number, but it seems to be permenant.",
+			"MatchText": "mirror"
+		}
+	]
+}

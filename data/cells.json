@@ -4,10 +4,12 @@
 			"Id": 3000,
 			"Description": "You are in a long corridor. The air is damp and cold; the floor and walls are bare stone.\n\nPrison cells are set into the walls on the North and South sides. Dim torch-light enters through a grate in the ceiling. \n\nYour cell is South. The corridor extends East and West.",
 			"South": 1001,
+			"East": 4000,
 			"Occupied Cell": 3010,
 			"CommandWhite": [
 				3000,
-				3010
+				3010,
+				3030
 			]
 		},
 		{
@@ -15,6 +17,7 @@
 			"Description": "A figure lays slumped in this cell. The cell is dark and the door is locked.\n\nAbove the door is inscribed the number '451'.",
 			"Back": 3000,
 			"South": 3000,
+			"East": 4000,
 			"CommandWhite": [
 				3020
 			]
@@ -46,6 +49,15 @@
 				"shout"
 			],
 			"ReplyText": "The figure does not respond to anything you say."
+		},
+		{
+			"Id": 3030,
+			"MultiMatchText": [
+				"my cell",
+				"cell door",
+				"own cell"
+			],
+			"ReplyText": "Your own cell is the only one that is open. Above the door is inscribed the number '999'"
 		}
 	]
 }

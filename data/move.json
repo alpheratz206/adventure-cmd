@@ -64,6 +64,28 @@
 			],
 			"ReplyText": "You cannot go that way.",
 			"Always": true
+		},
+		{
+			"Id": 2060,
+			"MultiMatchText": [
+				"go up",
+				"travel up",
+				"exit up",
+				"up"
+			],
+			"Direction": "Up",
+			"Always": true
+		},
+		{
+			"Id": 2070,
+			"MultiMatchText": [
+				"go down",
+				"travel down",
+				"exit down",
+				"down"
+			],
+			"Direction": "Down",
+			"Always": true
 		}
 	]
 }
