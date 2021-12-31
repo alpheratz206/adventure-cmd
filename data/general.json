@@ -31,6 +31,15 @@
 			],
 			"Always": true,
 			"UniqueAction": "Repeat"
+		},
+		{
+			"Id": 500,
+			"MultiMatchText": [
+				"inventory",
+				"inv"
+			],
+			"Always": true,
+			"UniqueAction": "Inventory"
 		}
 	]
 }

@@ -15,6 +15,22 @@
 			"CommandWhite": [
 				1000
 			]
+		},
+		{
+			"Id": 1002,
+			"Description": "This is your cell. You woke up here some time ago. With your torch, you can see something small gleaming on the floor.",
+			"North": 3000,
+			"CommandWhite": [
+				1010
+			]
+		},
+		{
+			"Id": 1003,
+			"Description": "This is your cell. You woke up here some time ago. You found an onyx ring on the floor here.",
+			"North": 3000,
+			"CommandWhite": [
+				1001
+			]
 		}
 	],
 	"commands": [
@@ -26,6 +42,34 @@
 				"search"
 			],
 			"ReplyText": "It is dark, and you cannot see anything."
+		},
+		{
+			"Id": 1001,
+			"MultiMatchText": [
+				"look",
+				"examine",
+				"search"
+			],
+			"ReplyText": "You already found an onyx ring on the floor. There is nothing else here."
+		},
+		{
+			"Id": 1010,
+			"MultiMatchText": [
+				"look",
+				"examine",
+				"search",
+				"gleam",
+				"ring"
+			],
+			"RequiredItem": 4000,
+			"ReplyText": "You take an onyx ring from the floor of your cell. You know it is capable of fire magic. Perhaps it was yours?",
+			"GrantItem": 1000
+		}
+	],
+	"items": [
+		{
+			"Id": 1000,
+			"Description": "an onyx ring capable of fire magic"
 		}
 	]
 }

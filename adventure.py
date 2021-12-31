@@ -6,16 +6,25 @@ from commandHelper import *
 class Adventure:
 	quit = False
 
+	def __printBoldWithLineBreak(self, text):
+		printBold(f"{text}\n")
+
 	def __introduceState(self):
-		printBold(f"{self.state['Description']}\n")
+		self.__printBoldWithLineBreak(self.state['Description'])
 
 	def __changeState(self, state):
 		self.state = state
 		self.__introduceState()
 
+	def __isItemGiven(self, item):
+		try:
+			return item['Given']
+		except KeyError:
+			return False
+
 	def __processCommand(self, command, arguments = []):
 		try:
-			printBold(f"{command['ReplyText']}\n")
+			self.__printBoldWithLineBreak(command['ReplyText'])
 		except KeyError:
 			pass
 
@@ -25,7 +34,14 @@ class Adventure:
 				newStateID = self.state[direction]
 				self.__changeState(list(filter(lambda state: state['Id'] == newStateID, self.data.states))[0])
 			except KeyError:
-				printBold("You cannot go that way.\n")
+				self.__printBoldWithLineBreak("You cannot go that way.")
+		except KeyError:
+			pass
+
+		try:
+			grantedItemID = command['GrantItem']
+			grantedItem = list(filter(lambda item: item['Id'] == grantedItemID, self.data.items))[0]
+			grantedItem['Given'] = True
 		except KeyError:
 			pass
 
@@ -35,6 +51,16 @@ class Adventure:
 				self.__introduceState()
 			elif action.lower() == "quit":
 				self.quit = True
+			elif action.lower() == "inventory":
+				allItems = list(filter(lambda item: self.__isItemGiven(item), self.data.items))
+				if len(allItems) > 0:
+					# itemDescriptions = ', '.join(map(lambda item: item['Description'], allItems))
+					printBold("Inventory:")
+					for item in allItems:
+						printBold(item['Description'])
+					print(" ")
+				else:
+					self.__printBoldWithLineBreak("You have no items.")
 		except KeyError:
 			pass
 

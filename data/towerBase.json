@@ -15,7 +15,8 @@
 	"commands": [
 		{
 			"Id": 4000,
-			"ReplyText": "The torches are hung too high up for you to reach.",
+			"ReplyText": "You take one of the torches from the wall.",
+			"GrantItem": 4000,
 			"MatchText": "torch"
 		},
 		{
@@ -27,6 +28,12 @@
 			"Id": 4020,
 			"ReplyText": "You look at yourself in the mirror. You look just how you expect to look, but for one detail: the number '999' has been written onto your forehead. You try to rub off the number, but it seems to be permenant.",
 			"MatchText": "mirror"
+		}
+	],
+	"items": [
+		{
+			"Id": 4000,
+			"Description": "a torch"
 		}
 	]
 }

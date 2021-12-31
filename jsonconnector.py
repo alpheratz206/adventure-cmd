@@ -16,6 +16,11 @@ class JsonConnector:
 		if not self.__unique(ids):
 			raise Exception("Command IDs are not unique!")
 
+	def __validateItems(self):
+		ids = map(lambda item: item['Id'], self.items)
+		if not self.__unique(ids):
+			raise Exception("Item IDs are not unique!")
+
 
 	def __loadFile(self, fileName):
 		file = open(f'data/{fileName}')
@@ -31,6 +36,11 @@ class JsonConnector:
 		except KeyError:
 			pass
 
+		try:
+			self.items = self.items + fileData['items']
+		except KeyError:
+			pass
+
 	def __loadAllFiles(self): 
 		directory = './data'
 		for fileName in os.listdir(directory):
@@ -41,11 +51,14 @@ class JsonConnector:
 	def __init__(self):
 		self.states = []
 		self.commands = []
+		self.items = []
 
 		self.__loadAllFiles()
 
 		self.__validateStates()
 		self.__validateCommands()
+		self.__validateItems()
 
 		self.states.sort(key = lambda state: state['Id'])
 		self.commands.sort(key = lambda command: command['Id'])
+		self.items.sort(key = lambda item: item['Id'])
