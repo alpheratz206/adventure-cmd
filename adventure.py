@@ -31,8 +31,21 @@ class Adventure:
 		try:
 			direction = command['Direction']
 			try:
-				newStateID = self.state[direction]
-				self.__changeState(list(filter(lambda state: state['Id'] == newStateID, self.data.states))[0])
+				directionData = self.state[direction]
+				try:
+					self.__changeState(list(filter(lambda state: state['Id'] == directionData, self.data.states))[0])
+				except IndexError:
+					for directionDataObj in directionData:
+						try:
+							requiredItemID = directionDataObj['RequiredItem']
+							requiredItem = list(filter(lambda item: item['Id'] == requiredItemID, self.data.items))[0]
+							success = self.__isItemGiven(requiredItem)
+						except IndexError:
+							success = True
+						if success:
+							stateID = directionDataObj['StateID']
+							self.__changeState(list(filter(lambda state: state['Id'] == stateID, self.data.states))[0])
+							break
 			except KeyError:
 				self.__printBoldWithLineBreak("You cannot go that way.")
 		except KeyError:
@@ -93,10 +106,15 @@ class Adventure:
 
 	def __init__(self):
 		self.data = JsonConnector()
-		self.commandHelper = CommandHelper()
-		self.inputParser = InputParser()
+		self.commandHelper = CommandHelper(self.data)
+		self.inputParser = InputParser(self.commandHelper)
 		self.__changeState(self.data.states[0])
 		self.commands = self.data.commands
 
 
-Adventure().play()
+if __name__ == "__main__":
+	Adventure().play()
+
+
+
+

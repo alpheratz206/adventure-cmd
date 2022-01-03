@@ -52,5 +52,5 @@ class InputParser:
 		return scored
 
 
-	def __init__(self):
-		self.commandHelper = CommandHelper()
+	def __init__(self, commandHelper):
+		self.commandHelper = commandHelper

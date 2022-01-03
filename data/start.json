@@ -22,7 +22,8 @@
 			"North": 3000,
 			"CommandWhite": [
 				1010
-			]
+			],
+			"FindRing": 1003
 		},
 		{
 			"Id": 1003,
@@ -61,9 +62,9 @@
 				"gleam",
 				"ring"
 			],
-			"RequiredItem": 4000,
 			"ReplyText": "You take an onyx ring from the floor of your cell. You know it is capable of fire magic. Perhaps it was yours?",
-			"GrantItem": 1000
+			"GrantItem": 1000,
+			"Direction": "FindRing"
 		}
 	],
 	"items": [

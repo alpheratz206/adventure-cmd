@@ -3,7 +3,20 @@
 		{
 			"Id": 3000,
 			"Description": "You are in a long corridor. The air is damp and cold; the floor and walls are bare stone.\n\nPrison cells are set into the walls on the North and South sides. Dim torch-light enters through a grate in the ceiling. \n\nYour cell is South. The corridor extends East and West.",
-			"South": 1001,
+			"South": [
+				{
+					"RequiredItem": 1000,
+					"StateID": 1003
+				},
+				{
+					"RequiredItem": 4000,
+					"StateID": 1002
+				},
+				{
+					"RequiredItem": null,
+					"StateID": 1001
+				}
+			],
 			"East": 4000,
 			"Occupied Cell": 3010,
 			"CommandWhite": [
