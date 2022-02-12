@@ -6,7 +6,8 @@
 			"Up": 4000,
 			"Keys": 5010,
 			"CommandWhite": [
-				5000
+				5000,
+				5020
 			]
 		},
 		{
@@ -15,7 +16,8 @@
 			"Up": 4000,
 			"Back": 5000,
 			"CommandWhite": [
-				5010
+				5010,
+				5020
 			]
 		}
 	],
@@ -32,6 +34,14 @@
 			"Id": 5010,
 			"MultiMatchText": [ "0","1","2","3","4","5","6","7","8","9"	],
 			"ReplyText": "As soon as your fingers brush the keys, you pull your hand away. It is like touching a hot stove, though the keys are not hot: they might be enchanted to keep certain people from touching them."
+		},
+		{
+			"Id": 5020,
+			"MultiMatchText": [
+				"torturer",
+				"chair"
+			],
+			"ReplyText": "The torturer is quite dead."
 		}
 	]
 }

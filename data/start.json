@@ -62,7 +62,7 @@
 				"gleam",
 				"ring"
 			],
-			"ReplyText": "You take an onyx ring from the floor of your cell. You know it is capable of fire magic. Perhaps it was yours?",
+			"ReplyText": "You take an onyx ring from the floor of your cell. You know it is capable of earth magic. Perhaps it was yours?",
 			"GrantItem": 1000,
 			"Direction": "FindRing"
 		}
@@ -70,7 +70,7 @@
 	"items": [
 		{
 			"Id": 1000,
-			"Description": "an onyx ring capable of fire magic"
+			"Description": "an onyx ring capable of earth magic"
 		}
 	]
 }

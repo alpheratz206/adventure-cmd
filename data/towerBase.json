@@ -9,6 +9,18 @@
 				4000,
 				4010,
 				4020
+			],
+			"FindTorch": 4001
+		},
+		{
+			"Id": 4001,
+			"Description": "You are in a large circular room with a domed ceiling, lit by torches. You took a torch from here, leaving one sconce empty.\n\nA mirror hangs on the East wall.\n\nThe cell block is West. Staircases lead up and down.",
+			"West": 3000,
+			"Down": 5000,
+			"CommandWhite": [
+				4001,
+				4010,
+				4020
 			]
 		}
 	],
@@ -17,6 +29,12 @@
 			"Id": 4000,
 			"ReplyText": "You take one of the torches from the wall.",
 			"GrantItem": 4000,
+			"MatchText": "torch",
+			"Direction": "FindTorch"
+		},
+		{
+			"Id": 4001,
+			"ReplyText": "You already have a torch",
 			"MatchText": "torch"
 		},
 		{
